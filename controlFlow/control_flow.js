@@ -3,6 +3,10 @@ let accessLevel;
 let isLoggedIn = true;
 let userMessage;
 
+let isAuthenticated = true;
+authenticationStatus = isAuthenticated ? "Authenticated" : "Not authenticated";
+console.log("Authentication Status:", authenticationStatus);
+
 if (userRole === "admin") {
     accessLevel = "Full access granted";
 } else if (userRole === "manager") {
