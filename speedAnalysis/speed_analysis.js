@@ -1,5 +1,5 @@
 let testText = "The quick brown fox jumps over the lazy dog.";
-let startTime, endTime;
+let startTime, endTime, intervalID;
 
 function startTest() {
     // Set the test text
@@ -17,6 +17,12 @@ function startTest() {
     var button = document.getElementById("btn");
     button.innerHTML = "End Test";
     button.onclick = endTest;
+
+    // Display time lapse
+    let count = 0;
+    intervalID =  setInterval(function(){
+        document.getElementById("timeElapse").innerHTML = "Seconds elapsed:"+ count;
+        count++},1000);
 }
 
 
@@ -46,6 +52,9 @@ function endTest() {
         wpm = Math.round((typedWords / timeElapsed) * 60);
     }
 
+    // rest the output display
+    clearInterval(intervalID);
+    document.getElementById("timeElapse").innerHTML ="";
     // Display the results
     var outputDiv = document.getElementById("output");
     outputDiv.innerHTML = "<h2>Typing Test Results:</h2>" +
